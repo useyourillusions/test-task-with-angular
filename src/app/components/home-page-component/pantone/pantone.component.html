@@ -1,0 +1,17 @@
+<div class="b-pantone" title="Choose color scheme" (click)="$event.currentTarget.classList.toggle('_active')">
+  <svg class="svg-pantone" version="1.2">
+    <use xlink:href="#svg-pantone"></use>
+  </svg>
+  <ul class="l-colors">
+    <li class="l-colors__item"
+        style="transition-delay: 0s;"
+        [class._active]="colorSchemeClass === 'color-scheme-default'"
+        (click)="applyScheme($event, 'color-scheme-default')"></li>
+    <li class="l-colors__item"
+        style="transition-delay: 0.05s;"
+        (click)="applyScheme($event, 'color-scheme-green')"></li>
+    <li class="l-colors__item"
+        style="transition-delay: 0.1s;"
+        (click)="applyScheme($event, 'color-scheme-teal')" ></li>
+  </ul>
+</div>

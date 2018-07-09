@@ -1,0 +1,15 @@
+<picture>
+  <source src={{card.img}} media="(min-width: 1200px)" />
+  <img class="l-examples__img" src={{card.img}} alt={{card.title}} />
+</picture>
+<a class="l-examples__link" href={{card.link}}>
+  <div class="l-examples__link-info">
+    <h5 class="l-examples__link-title">{{card.title}}</h5>
+    <p class="l-examples__link-description">{{card.description}}</p>
+  </div>
+  <div class="l-examples__link-icon">
+    <svg class="svg-arrow-right" version="1.2">
+      <use xlink:href="#svg-arrow-right"/>
+    </svg>
+  </div>
+</a>

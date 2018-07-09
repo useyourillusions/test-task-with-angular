@@ -1,0 +1,53 @@
+<div class="b-filter">
+  <h5 class="b-filter__title">
+    <svg class="svg-rectangles" version="1.2">
+      <use xlink:href="#svg-rectangles"></use>
+    </svg>
+    <span>Filter</span>
+  </h5>
+
+  <ul class="l-nav-filter">
+    <li class="l-nav-filter__item">
+      <a href="#"
+         (click)="applyFilter($event)"
+         class="l-nav-filter__link"
+         [class._active]="selectedFilter === 'all'"
+         data-filter="all">All works</a>
+    </li>
+    <li class="l-nav-filter__item">
+      <a href="#"
+         (click)="applyFilter($event)"
+         class="l-nav-filter__link"
+         [class._active]="selectedFilter === 'design'"
+         data-filter="design">Web design</a>
+    </li>
+    <li class="l-nav-filter__item">
+      <a href="#"
+         (click)="applyFilter($event)"
+         class="l-nav-filter__link"
+         [class._active]="selectedFilter === 'illustrations'"
+         data-filter="illustrations">Illustrations</a>
+    </li>
+    <li class="l-nav-filter__item">
+      <a href="#"
+         (click)="applyFilter($event)"
+         class="l-nav-filter__link"
+         [class._active]="selectedFilter === 'photography'"
+         data-filter="photography">Photography</a>
+    </li>
+    <li class="l-nav-filter__item">
+      <a href="#"
+         (click)="applyFilter($event)"
+         class="l-nav-filter__link"
+         [class._active]="selectedFilter === 'wallpapers'"
+         data-filter="wallpapers">Wallpapers</a>
+    </li>
+    <li class="l-nav-filter__item">
+      <a href="#"
+         (click)="applyFilter($event)"
+         class="l-nav-filter__link"
+         [class._active]="selectedFilter === 'brochures'"
+         data-filter="brochures">Brochures</a>
+    </li>
+  </ul>
+</div>
