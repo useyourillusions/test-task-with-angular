@@ -1,2 +1,10 @@
-<app-cards-list></app-cards-list>
+<app-cards-list (errorEmitter)="receiveErrorData($event)"></app-cards-list>
 <app-pantone></app-pantone>
+
+<div class="b-http-errors" *ngIf="errorData">
+  <div class="b-http-errors__inner">
+    <p>An error occurred</p>
+    <p>Status: {{errorData.errorCode}}</p>
+    <p>Message: {{errorData.errorMessage}}</p>
+  </div>
+</div>

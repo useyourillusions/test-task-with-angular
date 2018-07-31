@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
+  errorData = null;
+
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  receiveErrorData(e) {
+    this.errorData = e;
   }
 }

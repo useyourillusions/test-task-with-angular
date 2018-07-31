@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, AfterViewInit, QueryList, ViewChildren, ViewChild } from '@angular/core';
+import {Component, ElementRef, OnInit, AfterViewInit, QueryList, ViewChildren, ViewChild, Output, EventEmitter} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FilterService } from '../../../services/filter/filter.service';
 import { PreloaderService } from '../../../services/preloader/preloader.service';
@@ -23,7 +23,7 @@ export class CardsListComponent implements OnInit, AfterViewInit {
 
   @ViewChild('list') list: ElementRef;
   @ViewChildren('listItem', { read: ElementRef }) listItems: QueryList<ElementRef>;
-  // @Output() test: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() errorEmitter: EventEmitter<object> = new EventEmitter<object>();
 
   constructor(
     private http: HttpClient,
@@ -32,11 +32,18 @@ export class CardsListComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    this.http.get('cards.json').subscribe((res: {cards: [{}]}) => {
-      setTimeout(() => {
+    this.http.get('http://localhost:5000/api/cards')
+      .subscribe((res: {cards: [{}]}) => {
         this.cards = res.cards;
         this.applyFilter();
-      }, 2000);
+
+      }, err  => {
+        console.log(err);
+
+        this.preloaderService.togglePreloader(false);
+        if (err.error) {
+          this.errorEmitter.emit(err.error);
+        }
     });
 
     this.filterService.filter.subscribe(res => {
@@ -46,8 +53,6 @@ export class CardsListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-
-    // this.test.emit(true);
     const appearanceWithRotate = (items) => {
       this.list.nativeElement.classList.remove('_animate-opacity');
       items.forEach((li, i) => {
